@@ -9,6 +9,12 @@
   <b>Price:</b>
   <%= @product.price %>
 </p>
+<b>Reviews:</b>
+<ol>
+	<ol>
+		<% @reviews.each do |review| %>
+		<li><%= review.body %> <%= review.rating %></li>
+		<% end %>
 <p>
 	<b>Add Review: <a href="/reviews/new?product_id=<%= @product.id %>">Create a new review</a>
 	</p>
