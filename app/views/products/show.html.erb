@@ -19,5 +19,8 @@
 	<b>Add Review: <a href="/reviews/new?product_id=<%= @product.id %>">Create a new review</a>
 	</p>
 
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
+<%= render 'cart.html' %>

@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+before_filter :load_products_in_cart, :only => [:index, :show]
+  def load_products_in_cart
+    @products_in_cart = Product.where(:in_cart => true)
+  end
+
   def index
     @products = Product.all
 
@@ -54,6 +59,19 @@ class ProductsController < ApplicationController
     end
   end
 
+# Cart add and update code
+
+def add_to_cart
+
+  @product = Product.find(params[:id]) 
+  @product.in_cart = true
+  @product.save
+    respond_to do |format|
+    format.html { redirect_to products_url }
+    format.json { head :no_content }
+    end
+  # @product.update_attributes({:in_cart => true})
+end
   # PUT /products/1
   # PUT /products/1.json
   def update

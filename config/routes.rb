@@ -1,10 +1,14 @@
 RailsStore::Application.routes.draw do
-  resources :reviews
+  #resources :reviews
 
+# get '/reviews/new(.:format)', :controller => 'reviews', :action => 'new', :as => "new_review"
+# post '/reviews/new(.:format)', :controller => 'reviews', :action => 'create'  
 
-  resources :products
+# get '/reviews', :to => 'reviews#index', :as 'reviews'
+resources :reviews
+resources :products
 
-
+post '/products/:id' => 'products#add_to_cart'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,7 +59,7 @@ RailsStore::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
-
+#root :to => 'products'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
