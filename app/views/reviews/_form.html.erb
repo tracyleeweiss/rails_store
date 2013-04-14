@@ -25,7 +25,7 @@
     <input type="hidden" name='review[product_id]' value='<%= @product.id %>' />
     <% else %>
     <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
+    <%= f.select :product_id, Product.all.collect {|p| [p.name, p.id]} %>
     <% end %>
   </div>
   <div class="actions">
